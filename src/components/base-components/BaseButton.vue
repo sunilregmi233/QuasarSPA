@@ -1,7 +1,6 @@
 <template>
   <q-btn 
     class="button"
-    @click="handleClick" 
     :to="route"
     :text-color="textColor"
     :label="label"

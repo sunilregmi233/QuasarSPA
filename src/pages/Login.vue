@@ -15,7 +15,7 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-md">
-            <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Login" />
+            <BaseButton unelevated  label="login" size="lg" class="full-width bg-primary" @click="login"></BaseButton>
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
             <p class="text-grey-6">Not reigistered? Created an Account</p>
@@ -28,17 +28,32 @@
 
 
 <script>
+// import Login02edaecc from 'app/src-cordova/platforms/android/app/build/intermediates/merged_assets/debug/out/www/assets/Login.02edaecc';
 import { defineComponent, ref } from 'vue'
 
+import { useUserStore } from '../stores/user/user'
 
 export default defineComponent({
   name: 'Login',
-
-
-
   setup () {
+    const userStore = useUserStore();
+    return { userStore }
 
-  }
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+    }
+  },
+  methods: {
+    async login() {
+      await this.userStore.signIn(this.email, this.password);
+    }
+  },
+
+
+  
 })
 </script>
 

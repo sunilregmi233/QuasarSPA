@@ -13,6 +13,7 @@
 
         <q-toolbar-title>
           Genius App
+          <h2>Welcome, {{ userStore.user }}</h2>
         </q-toolbar-title>
         <BaseButton label="login" route="/login"></BaseButton>
       </q-toolbar>
@@ -47,7 +48,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
-
+import { useUserStore } from '../stores/user/user';
 const linksList = [
   {
     title: 'Docs',
@@ -101,6 +102,7 @@ export default defineComponent({
   },
 
   setup () {
+    const userStore = useUserStore();
     const leftDrawerOpen = ref(false)
 
     return {
@@ -108,7 +110,8 @@ export default defineComponent({
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      },
+      userStore
     }
   }
 })
