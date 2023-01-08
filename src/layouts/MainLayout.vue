@@ -14,7 +14,7 @@
         <q-toolbar-title>
           Genius App
         </q-toolbar-title>
-        
+        <BaseButton label="login" route="/login"></BaseButton>
       </q-toolbar>
     </q-header>
 
